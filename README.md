@@ -6,4 +6,4 @@
 
 # Designed by Barkamart Global Services Ltd.
 
-# GitHub repo created today Friday, January 28, 2022
+GitHub repo created today Friday, January 28, 2022
