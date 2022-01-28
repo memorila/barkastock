@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ header }} </h1>
+
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <!-- guides against csrf injections-->
+        <p>
+            {{ form.date.label }}<br>
+            {{ form.date() }}<br>
+            {% for error in form.date.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.supplier_name.label }}<br>
+            {{ form.supplier_name() }}<br>
+            {% for error in form.supplier_name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}</br>
+            <a href="{{ url_for('suppliers') }}">Add Supplier</a>
+        </p>
+        
+        <p>
+            {{ form.product_name.label }}<br>
+            {{ form.product_name() }}<br>
+            {% for error in form.product_name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}</br>
+            <a href="{{ url_for('products') }}">Add Product</a>
+        </p>
+
+        <p>
+            {{ form.driver_name.label }}<br>
+            {{ form.driver_name(size=70) }}<br>
+            {% for error in form.driver_name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.driver_phone.label }}<br>
+            {{ form.driver_phone(size=70) }}<br>
+            {% for error in form.driver_phone.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.vehicle_no.label }}<br>
+            {{ form.vehicle_no(size=70) }}<br>
+            {% for error in form.vehicle_no.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+
+        <p>
+            {{ form.quantity.label }}<br>
+            {{ form.quantity(size=70) }}<br>
+            {% for error in form.quantity.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.cost_price.label }}<br>
+            {{ form.cost_price(size=70) }}<br>
+            {% for error in form.cost_price.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.trans_cost.label }}<br>
+            {{ form.trans_cost(size=70) }}<br>
+            {% for error in form.trans_cost.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.store_name.label }}<br>
+            {{ form.store_name() }}<br>
+            {% for error in form.store_name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}</br>
+            <a href="{{ url_for('stores') }}">Add Store</a>
+        </p>
+
+        <p> {{ form.duplicate() }} 
+            {{ form.add_new() }} 
+
+            {% if request.method=='GET' %}
+                {{ form.submit() }} 
+            {% elif request.method=='POST' %}
+                {{ form.update }}
+            {% endif %}
+
+        </p>
+    </form>
+
+    
+{% endblock content %}
+

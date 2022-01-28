@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ header }} </h1>
+
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <!-- guides against csrf injections-->
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=70) }}<br>
+            {% for error in form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.privileges.label }}<br>
+            {{ form.privileges() }}<br>
+            {% for error in form.privileges.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}</br>
+        </p>
+
+        {{ form.active() }} {{ form.active.label }}
+
+        <p> {{ form.duplicate() }} 
+            {{ form.add_new() }} 
+
+            {% if request.method=='GET' %}
+                {{ form.submit() }} 
+            {% elif request.method=='POST' %}
+                {{ form.update }}
+            {% endif %}
+
+        </p>
+    </form>
+
+    
+{% endblock content %}
+
